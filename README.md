@@ -181,7 +181,7 @@ $env:MIN_RPS = "500"
 npm run load-test
 ```
 
-The script creates uniquely named test clients and leaves their configuration and short-lived state in Redis. Use a disposable Redis database when running repeated load tests against a production-like deployment. The test measures client-observed HTTP throughput; actual throughput depends on the host, Redis placement, and network path.
+The script creates uniquely named test clients and leaves their configuration and limiter state in Redis. Use a disposable Redis database when running repeated load tests against a production-like deployment. The test measures client-observed HTTP throughput; actual throughput depends on the host, Redis placement, and network path.
 
 ## Operational notes
 

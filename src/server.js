@@ -187,7 +187,7 @@ app.use((error, req, res, next) => {
 
 async function start() {
   await redis.connect();
-  app.listen(port, () => console.log(`Rate limiter listening on port ${port}`));
+  app.listen(port, '0.0.0.0', () => console.log(`Rate limiter listening on port ${port}`));
 }
 
 start().catch((error) => {
