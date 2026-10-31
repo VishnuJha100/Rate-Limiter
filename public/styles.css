@@ -1,0 +1,75 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #171717;
+  background: #fff;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.page {
+  width: min(1100px, calc(100% - 32px));
+  margin: 28px auto;
+}
+
+.page-header { margin-bottom: 20px; }
+h1 { margin: 0 0 4px; font-size: 24px; font-weight: 600; }
+h2 { margin: 0 0 14px; font-size: 17px; font-weight: 600; }
+p { margin: 0; color: #555; }
+
+.panel {
+  margin: 14px 0;
+  padding: 16px;
+  border: 1px solid #c9c9c9;
+  background: #fff;
+}
+
+label { display: flex; flex-direction: column; gap: 5px; font-weight: 600; }
+input, select, button {
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid #999;
+  border-radius: 2px;
+  background: #fff;
+  color: #171717;
+  font: inherit;
+}
+button { align-self: end; min-width: 130px; cursor: pointer; }
+button:hover { background: #eee; }
+input:focus, select:focus, button:focus-visible { outline: 2px solid #555; outline-offset: 1px; }
+
+.access-form { display: flex; align-items: end; gap: 10px; max-width: 600px; }
+.access-form label { flex: 1; }
+.config-form { display: grid; grid-template-columns: 2fr 1.3fr 1.3fr 1fr auto; align-items: end; gap: 10px; }
+.status { min-height: 20px; margin-top: 10px; }
+.status.error { color: #a11212; }
+.status.success { color: #17652a; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.section-heading span, footer { color: #666; font-size: 12px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 9px 8px; border-top: 1px solid #d5d5d5; white-space: nowrap; }
+th { background: #f2f2f2; font-weight: 600; }
+.allow-rate { color: #17652a; }
+.deny-rate { color: #a11212; }
+footer { padding: 8px 0; }
+
+@media (max-width: 800px) {
+  .config-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .config-form button { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 500px) {
+  .access-form { align-items: stretch; flex-direction: column; }
+  .access-form button { align-self: start; }
+  .config-form { grid-template-columns: 1fr; }
+  .config-form button { grid-column: auto; }
+  .section-heading { align-items: start; flex-direction: column; }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "token-bucket-rate-limiter-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone Redis-backed rate limiting API with a live dashboard.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "load-test": "node scripts/load-test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "redis": "^4.7.0"
+  }
+}

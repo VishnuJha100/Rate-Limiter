@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rate Limiter Service</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <h1>Rate Limiter Service</h1>
+      <p>Client configuration and request activity over the last 10 seconds.</p>
+    </header>
+
+    <section class="panel" aria-labelledby="access-heading">
+      <h2 id="access-heading">Administrator access</h2>
+      <form id="access-form" class="access-form">
+        <label for="admin-key">Admin API key</label>
+        <input id="admin-key" name="adminKey" type="password" autocomplete="off" required>
+        <button type="submit">Connect</button>
+      </form>
+      <p id="connection-status" class="status" role="status">Enter the configured admin key to view metrics and manage clients.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="configure-heading">
+      <h2 id="configure-heading">Configure client</h2>
+      <form id="config-form" class="config-form">
+        <label>Client key<input name="clientKey" maxlength="200" required></label>
+        <label>Algorithm
+          <select name="algorithm">
+            <option value="token-bucket">Token Bucket</option>
+            <option value="sliding-window">Sliding Window</option>
+          </select>
+        </label>
+        <label>Requests per second<input name="requestsPerSecond" type="number" min="0.000001" max="1000000" step="any" value="10" required></label>
+        <label>Burst size<input name="burstSize" type="number" min="1" max="1000000" step="1" value="20" required></label>
+        <button type="submit">Save configuration</button>
+      </form>
+      <p id="config-status" class="status" role="status"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="activity-heading">
+      <div class="section-heading">
+        <h2 id="activity-heading">Live activity</h2>
+        <span id="updated-at">Waiting for connection</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Client key</th>
+              <th scope="col">Algorithm</th>
+              <th scope="col">Requests/s</th>
+              <th scope="col">Denies/s</th>
+              <th scope="col">Requests (10 s)</th>
+              <th scope="col">Denies (10 s)</th>
+            </tr>
+          </thead>
+          <tbody id="metrics-body"><tr><td colspan="6">Connect with an admin key to load client activity.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <footer>Metrics refresh every second. Rates are calculated over a rolling 10-second observation window.</footer>
+  </main>
+  <script src="/dashboard.js" defer></script>
+</body>
+</html>
